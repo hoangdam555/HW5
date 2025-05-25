@@ -1,17 +1,25 @@
-namespace Chap13_3
+﻿
+using System;
+interface IPrice
 {
-    internal static class Program
+    double GetPrice();
+}
+class Car : IPrice
+{
+    public double Price;
+    public string? Name;
+    public double GetPrice() { return this.Price; }
+    public string? GetName() { return this.Name; }
+}
+class Program
+{
+    static void Main(string[] args)
     {
-        /// <summary>
-        ///  The main entry point for the application.
-        /// </summary>
-        [STAThread]
-        static void Main()
-        {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
-            ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
-        }
+        Car car = new Car();
+        car.Price = 150000;
+        car.Name = "Lexus";
+        Console.WriteLine(
+            $"Car Name: {car.GetName()}\n" +
+            $"Car Price: {car.GetPrice()}");
     }
 }
